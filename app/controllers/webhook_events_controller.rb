@@ -6,9 +6,14 @@ class WebhookEventsController < ApplicationController
     when 'stripe'
       case params[:type]
       when 'identity.verification_session.verified'
-        byebug
-      end
+        isverified = params["data"]["object"]["status"]
+        if isverified == "verified"
+          redirect_to success_path
+        end
       when 'identity.verification_session.requires_input'
+        
+        byebug
+      when 'identity.verification_session.unverified'
         byebug
       end
     end

@@ -2,25 +2,25 @@
   <head>
     <title>Verify your identity</title>
     <script src="https://js.stripe.com/v3/"></script>
+     
   </head>
   <body>
     <button id="verify-button">Verify</button>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
-      Launch
-    </button>
+   
     
     <script type="text/javascript">
       // Set your publishable key: remember to change this to your live publishable key in production
       // See your keys here: https://dashboard.stripe.com/apikeys
       var stripe = Stripe('pk_test_wTt4xORM17cfoHecwZKr7wis00HkcxBByU');
       var verifyButton = document.getElementById('verify-button');
-
+      
       verifyButton.addEventListener('click', function() {
         // Get the VerificationSession client secret using the server-side
         // endpoint you created in step 3.
         fetch('/stripe/create-verification-session', {
           method: 'POST',
+          
         })
         .then(function(response) {
           return response.json();
